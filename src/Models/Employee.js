@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { db } = require('../../db');
+const { db,autoIncrement } = require('../../db');
 
 const employeeSchema = Schema({
+    id:{
+        type:Number,
+        unique:true
+    },
     full_name: {
         type: String
     },
@@ -15,7 +19,11 @@ const employeeSchema = Schema({
     long: {
         type: Number
     }
-
 })
+
+employeeSchema.plugin(autoIncrement.plugin, {
+    model: 'user',
+    field: 'id',
+});
 
 module.exports = db.model('Employee', employeeSchema);
