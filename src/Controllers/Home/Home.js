@@ -7,16 +7,16 @@ const home_page = function (req, res) {
     User.findOne({ id: userId }).exec(function (err, user) {
         if (err) {
             console.log('err')
-            res.sendStatus(404).json(errorMessage('id not found.'));
+            res.status(404).json(errorMessage('id not found.'));
             return;
         } else {
             Position.findOne({ id: user.position }).exec(function (err, position) {
                 if (err) {
                     console.log('err')
-                    res.sendStatus(404).json(errorMessage('wrong position'));
+                    res.status(404).json(errorMessage('wrong position'));
                     return;
                 } else {
-                    res.json({
+                    res.status(200).json({
                         name: user.fullName,
                         position: position.name
                     });

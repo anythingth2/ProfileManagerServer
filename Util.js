@@ -3,3 +3,7 @@ const errorMessage = function (message) {
         error: message
     };
 }
+
+module.exports = {
+    errorMessage:errorMessage
+}

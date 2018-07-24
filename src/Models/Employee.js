@@ -7,7 +7,7 @@ const employeeSchema = Schema({
         type:Number,
         unique:true
     },
-    full_name: {
+    fullName: {
         type: String
     },
     position: {
