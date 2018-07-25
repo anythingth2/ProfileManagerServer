@@ -1,31 +1,41 @@
 const User = require('../../Models/User');
 const Position = require('../../Models/Position');
+const Employee = require('../../Models/Employee');
 const { errorMessage } = require('../../../Util');
 const home_page = function (req, res) {
     let userId = Number(req.params.id);
 
     User.findOne({ id: userId }).exec(function (err, user) {
         if (err) {
-            console.log('err')
             res.status(404).json(errorMessage('id not found.'));
             return;
-        } else {
-            Position.findOne({ id: user.position }).exec(function (err, position) {
+        }
+        Position.findOne({ id: user.position }).exec(function (err, position) {
+            if (err) {
+                res.status(404).json(errorMessage('wrong position'));
+                return;
+            }
+            Employee.find({ id: user.members }).exec(function (err, employeese) {
                 if (err) {
-                    console.log('err')
                     res.status(404).json(errorMessage('wrong position'));
                     return;
-                } else {
+                }
+                Promise.all(employeese.map(async (employee) => {
+                    return { 
+                        fullName:employee.fullName,
+                        position: (await Position.getPosition(employee.position)).name 
+                    };
+                })).then((employeese) => {
                     res.status(200).json({
                         name: user.fullName,
-                        position: position.name
+                        position: position.name,
+                        members: employeese
                     });
-                }
+                });
             });
         }
+        );
     });
-
-
 };
 
 module.exports = {

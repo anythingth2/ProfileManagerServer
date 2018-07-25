@@ -15,7 +15,7 @@ const userSchema = Schema({
         type: Number,
         required: true,
     },
-    member:[{
+    members:[{
         type:Number,
         unique:true,
     }]

@@ -10,8 +10,12 @@
                 },
                 "respond": {
                     "200": {
-                        "name": "String",
-                        "position": "String"
+                        "fullName": "String",
+                        "position": "String",
+                        "member":[{
+                            "fullName":"string",
+                            "position":"String"
+                        }]
                     },
                     "404": {
                         "error": "String"

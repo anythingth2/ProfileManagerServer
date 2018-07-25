@@ -12,7 +12,9 @@ const positionSchema = Schema({
         unique: true,
     }
 });
-
+positionSchema.statics.getPosition = function (id) {
+    return this.findOne({id:id}).exec();
+}
 positionSchema.plugin(autoIncrement.plugin, {
     model: 'Position',
     field: 'id',
