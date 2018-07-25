@@ -1,0 +1,54 @@
+{
+    "api": {
+        "home": {
+            "home_page/:id": {
+                "request": {
+                    "method": "GET",
+                    "params": {
+                        "id": "Number"
+                    }
+                },
+                "respond": {
+                    "200": {
+                        "name": "String",
+                        "position": "String"
+                    },
+                    "404": {
+                        "error": "String"
+                    }
+                }
+            }
+        },
+        "user": {
+            "addUser": {
+                "request": {
+                    "method": "POST",
+                    "body": {
+                        "fullName": "String",
+                        "position": "Number"
+                    },
+                    "respond": {
+                        "201": {
+                            "id": "Number"
+                        },
+                        "400": {
+                            "error": "String"
+                        }
+                    }
+                }
+            },
+            "addEmployee": {
+                "request":{
+                    "method":"POST",
+                    "params":{
+                        "id":"Number"
+                    },
+                    "body":{
+                        "fullName":"String",
+                        "position":"Number"   
+                    }
+                }
+            }
+        }
+    }
+}
