@@ -27,7 +27,7 @@ const home_page = function (req, res) {
                     };
                 })).then((employeese) => {
                     res.status(200).json({
-                        name: user.fullName,
+                        fullName: user.fullName,
                         position: position.name,
                         members: employeese
                     });
