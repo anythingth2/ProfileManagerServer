@@ -22,6 +22,7 @@ const home_page = function (req, res) {
                 }
                 Promise.all(employeese.map(async (employee) => {
                     return { 
+                        id:employee.id,
                         fullName:employee.fullName,
                         position: (await Position.getPosition(employee.position)).name 
                     };
