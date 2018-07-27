@@ -6,17 +6,17 @@ const home_page = function (req, res) {
     let userId = Number(req.params.id);
 
     User.findOne({ id: userId }).exec(function (err, user) {
-        if (err) {
+        if (err || !user) {
             res.status(404).json(errorMessage('id not found.'));
             return;
         }
         Position.findOne({ id: user.position }).exec(function (err, position) {
-            if (err) {
+            if (err || !position) {
                 res.status(404).json(errorMessage('wrong position'));
                 return;
             }
             Employee.find({ id: user.members }).exec(function (err, employeese) {
-                if (err) {
+                if (err||!employeese) {
                     res.status(404).json(errorMessage('wrong position'));
                     return;
                 }
