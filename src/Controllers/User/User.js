@@ -2,6 +2,16 @@ const User = require('../../Models/User');
 const Employee = require('../../Models/Employee');
 const { errorMessage } = require('../../../Util');
 
+const getUsers = async function (req, res) {
+    let users = await User.find({}).exec();
+
+    res.status(200).json(users.map((user) => {
+        return {
+            id: user.id, fullName: user.fullName
+        }
+    }));
+}
+
 const addUser = function (req, res) {
     User.create({ fullName: req.body.fullName, position: req.body.position }).then((user) => {
         res.status(201).json({
@@ -28,6 +38,7 @@ const addEmployee = function (req, res) {
     });
 }
 module.exports = {
+    getUsers: getUsers,
     addUser: addUser,
     addEmployee: addEmployee
 }

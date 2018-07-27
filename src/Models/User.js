@@ -17,7 +17,7 @@ const userSchema = Schema({
     },
     members:[{
         type:Number,
-        unique:true,
+        // unique:true,
     }]
 });
 userSchema.plugin(autoIncrement.plugin, {
