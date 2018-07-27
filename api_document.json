@@ -51,8 +51,9 @@
                         "id": "Number",
                         "fullName": "String",
                         "position": "Number",
-                        "members":["Number"]
-                        
+                        "members": [
+                            "Number"
+                        ]
                     }
                 }
             },
@@ -82,6 +83,24 @@
                     "body": {
                         "fullName": "String",
                         "position": "Number"
+                    }
+                }
+            }
+        },
+        "employee": {
+            "/:id": {
+                "request": {
+                    "method": "GET",
+                    "params": {
+                        "id": "Number"
+                    }
+                },
+                "respond": {
+                    "200": {
+                        "id": "Number",
+                        "fullName": "String",
+                        "position": "Number"
+                        
                     }
                 }
             }
