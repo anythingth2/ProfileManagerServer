@@ -1,7 +1,15 @@
 const User = require('../../Models/User');
 const Employee = require('../../Models/Employee');
 const { errorMessage } = require('../../../Util');
+const getUser = async function (req, res) {
+    var id = Number(req.params.id);
 
+    var user = await User.findOne({ id: id }).exec();
+    if (user != null)
+        res.status(200).json(user);
+    else
+        res.status(404).json(errorMessage('id not found!'));
+}
 const getUsers = async function (req, res) {
     let users = await User.find({}).exec();
 
@@ -38,6 +46,7 @@ const addEmployee = function (req, res) {
     });
 }
 module.exports = {
+    getUser: getUser,
     getUsers: getUsers,
     addUser: addUser,
     addEmployee: addEmployee

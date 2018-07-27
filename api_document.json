@@ -12,7 +12,7 @@
                     "200": {
                         "fullName": "String",
                         "position": "String",
-                        "member": [
+                        "members": [
                             {
                                 "fullName": "string",
                                 "position": "String"
@@ -31,46 +31,60 @@
                     "method": "GET"
                 },
                 "respond": {
-                    "200":[
+                    "200": [
                         {
-                            "id":"Number",
-                            "fullName":"String"
+                            "id": "Number",
+                            "fullName": "String"
                         }
                     ]
+                }
+            },
+            "/:id": {
+                "request": {
+                    "method": "GET",
+                    "params": {
+                        "id": "Number"
+                    }
+                },
+                "respond": {
+                    "200": {
+                        "id": "Number",
+                        "fullName": "String",
+                        "position": "Number",
+                        "members":["Number"]
                         
                     }
                 }
-            }
-        },
-        "addUser": {
-            "request": {
-                "method": "POST",
-                "body": {
-                    "fullName": "String",
-                    "position": "Number"
-                },
-                "respond": {
-                    "201": {
-                        "id": "Number"
+            },
+            "addUser": {
+                "request": {
+                    "method": "POST",
+                    "body": {
+                        "fullName": "String",
+                        "position": "Number"
                     },
-                    "400": {
-                        "error": "String"
+                    "respond": {
+                        "201": {
+                            "id": "Number"
+                        },
+                        "400": {
+                            "error": "String"
+                        }
                     }
                 }
-            }
-        },
-        "addEmployee": {
-            "request": {
-                "method": "POST",
-                "params": {
-                    "id": "Number"
-                },
-                "body": {
-                    "fullName": "String",
-                    "position": "Number"
+            },
+            "addEmployee": {
+                "request": {
+                    "method": "POST",
+                    "params": {
+                        "id": "Number"
+                    },
+                    "body": {
+                        "fullName": "String",
+                        "position": "Number"
+                    }
                 }
             }
         }
     }
-}
 }
